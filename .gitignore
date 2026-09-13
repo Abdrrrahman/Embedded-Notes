@@ -1,4 +1,6 @@
 .obsidian/
+.vscode/
+.test/
 Embedded Systems Diploma Sessions.md
 AVRinterfacingSummary
 AVRinterfacingSummary.pdf
