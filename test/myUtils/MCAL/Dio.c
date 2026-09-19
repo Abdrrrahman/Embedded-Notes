@@ -201,6 +201,74 @@ uint8_t Dio_ReadPin(uint8_t port, uint8_t pinNum) {
     return state;
 }
 
+// Nibble Functions
+void Dio_WriteLowerNibble(uint8_t port, uint8_t value) {
+    value &= 0x0f;
+
+    switch(port) {
+        case 'A':
+        case 'a':
+            PORTA &= 0xf0;
+            PORTA |= value;
+            break;
+
+        case 'B':
+        case 'b':
+            PORTB &= 0xf0;
+            PORTB |= value;
+            break;
+
+        case 'C':
+        case 'c':
+            PORTC &= 0xf0;
+            PORTC |= value;
+            break;
+
+        case 'D':
+        case 'd':
+            PORTD &= 0xf0;
+            PORTD |= value;
+            break;
+
+        default:
+            break;
+    }
+}
+
+void Dio_WriteHigherNibble(uint8_t port, uint8_t value) {
+    value <<= 4;
+
+    switch (port)
+    {
+        case 'A':
+        case 'a':
+            PORTA &= 0x0f;
+            PORTA |= value;
+            break;
+        
+        case 'B':
+        case 'b':
+            PORTB &= 0x0f;
+            PORTB |= value;
+            break;
+
+        case 'C':
+        case 'c':
+            PORTC &= 0x0f;
+            PORTC |= value;
+            break;
+
+        case 'D':
+        case 'd':
+            PORTD &= 0x0f;
+            PORTD |= value;
+            break;
+
+        default:
+            break;
+    }
+}
+
 // Port Specific Functions
 void Dio_SetPortDirection(uint8_t port, uint8_t direction) {
 
